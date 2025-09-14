@@ -372,7 +372,7 @@ function send(){				//Envia la quiniela al whatsapp
 }
 
 // Confeti mexicano
-const canvas = document.getElementById("confetti-canvas");
+/*const canvas = document.getElementById("confetti-canvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
@@ -425,8 +425,9 @@ animateConfetti();
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-});
+});*/
 
 
 window.addEventListener("load",start,false);
+
 
