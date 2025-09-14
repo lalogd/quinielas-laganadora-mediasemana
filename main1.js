@@ -371,4 +371,62 @@ function send(){				//Envia la quiniela al whatsapp
     window.location.href = "https://wa.me/"+tel+"?text="+quinbara+whatsapptext;}
 }
 
+// Confeti mexicano
+const canvas = document.getElementById("confetti-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const colors = ["#006847", "#ffffff", "#ce1126"]; // verde, blanco, rojo
+let confetti = [];
+
+function createConfetti() {
+    const x = Math.random() * canvas.width;
+    const y = 0;
+    const size = Math.random() * 1 + 1; // tamaño de papelitos
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    const speed = Math.random() * 1 + 1;
+    const tilt = Math.random() * 6 - 5;
+    confetti.push({x, y, size, color, speed, tilt});
+}
+
+function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let piece of confetti) {
+        ctx.fillStyle = piece.color;
+        ctx.beginPath();
+        ctx.ellipse(piece.x, piece.y, piece.size, piece.size / 2, piece.tilt, 0, Math.PI * 2);
+        ctx.fill();
+    }
+    updateConfetti();
+}
+
+function updateConfetti() {
+    for (let piece of confetti) {
+        piece.y += piece.speed;
+        piece.x += Math.sin(piece.tilt / 20); // movimiento lateral
+        piece.tilt += 0.1; // hace que roten un poco
+        if (piece.y > canvas.height) {
+            piece.y = 0;
+            piece.x = Math.random() * canvas.width;
+        }
+    }
+}
+
+function animateConfetti() {
+    drawConfetti();
+    requestAnimationFrame(animateConfetti);
+}
+
+setInterval(createConfetti, 10); // cantidad de confeti
+animateConfetti();
+
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+
 window.addEventListener("load",start,false);
+
