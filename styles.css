@@ -73,7 +73,7 @@ body{
     max-width: 400px;
     margin: auto;
     background-color: rgb(31, 70, 226);
-    background-image: url("fondohalloween.jpg");
+    background-image: url("fondo1.png");
     background-repeat: repeat-y;
     background-position: top;
 }
@@ -282,6 +282,7 @@ h6{
     pointer-events: none; /* no bloquea clics 
     z-index: 9999;
 }*/
+
 
 
 
